@@ -1,10 +1,10 @@
 const findOneById = require('../services/findOneById');
 
 module.exports = (req, res, next) => {
-  const { userId } = req.params;
-  findOneById(userId)
-    .then((user) => {
-      res.json(user);
+  const { listId } = req.params;
+  findOneById(listId)
+    .then((list) => {
+      res.json(list);
     })
     .catch((err) => {
       next(err);

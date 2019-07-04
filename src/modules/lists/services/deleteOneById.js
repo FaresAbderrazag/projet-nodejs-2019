@@ -2,15 +2,15 @@ const { ObjectId } = require('mongodb');
 const connect = require('../../../clients/mongodb');
 const collections = require('../../../enums/collections');
 
-module.exports = (userId, listId) => {
+module.exports = (id) => {
   return connect()
     .then(db => db.collection(collections.LISTS))
-    .then(collection => collection.deleteOne({ _id: ObjectId(listId), userId }))
+    .then(collection => collection.deleteOne({ _id: ObjectId(id) }))
     .then((dbResponse) => {
       if (dbResponse.deletedCount === 1) {
         return {
           status: 'ok',
-          deletedItem: listId,
+          deletedItem: id,
         };
       }
 

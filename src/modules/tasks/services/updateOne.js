@@ -5,7 +5,7 @@ const findOne = require('./findOne');
 const { updateModel } = require('../model');
 
 module.exports = (taskId, listId, taskToUpdate) => {
-  return updateModel.validate()
+  return updateModel.validate(taskToUpdate)
     .then(() => connect())
     .then(db => db.collection(collections.TASKS))
     .then(collection => collection.updateOne({

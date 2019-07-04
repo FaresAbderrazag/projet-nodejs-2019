@@ -9,7 +9,6 @@ const router = new Router();
 router.use('/api', listsRouter);
 router.use('/api', tasksRouter);
 router.use('/api', usersRouter);
-
 // End of service API
 
 module.exports = router;

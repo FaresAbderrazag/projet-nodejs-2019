@@ -1,10 +1,9 @@
 const createOne = require('../services/createOne');
 
 module.exports = (req, res, next) => {
-  const { userId } = req.params;
   const listToCreate = req.body;
 
-  createOne(listToCreate, userId)
+  createOne(listToCreate)
     .then((list) => {
       res.json(list);
     })

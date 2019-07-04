@@ -1,8 +1,8 @@
 const findOneById = require('../services/findOneById');
 
 module.exports = (req, res, next) => {
-  const { userId, listId } = req.params;
-  findOneById(userId, listId)
+  const { listId } = req.params;
+  findOneById(listId)
     .then((list) => {
       res.json(list);
     })

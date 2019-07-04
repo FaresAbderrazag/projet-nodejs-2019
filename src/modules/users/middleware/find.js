@@ -14,8 +14,8 @@ module.exports = (req, res, next) => {
   if (!isUndefined(offset)) offsetInt = parseInt(offset, 10);
 
   find(firstInt, offsetInt, term)
-    .then((users) => {
-      res.json(users);
+    .then((bdd) => {
+      res.json(bdd);
     })
     .catch((err) => {
       next(err);

@@ -4,17 +4,14 @@ const connect = require('../../../clients/mongodb');
 const collections = require('../../../enums/collections');
 const findOneById = require('./findOneById');
 
-module.exports = (userId, listId, listToUpdate) => {
-  return updateModel.validate()
+module.exports = (id, listToUpdate) => {
+  return updateModel.validate(listToUpdate)
     .then(() => connect())
     .then(db => db.collection(collections.LISTS))
-    .then(collection => collection.updateOne({
-      _id: ObjectId(listId),
-      userId,
-    }, { $set: listToUpdate }))
+    .then(collection => collection.updateOne({ _id: ObjectId(id) }, { $set: listToUpdate }))
     .then((dbResponse) => {
       if (dbResponse.matchedCount === 1) {
-        return findOneById(userId, listId);
+        return findOneById(id);
       }
 
       const err = new Error('Not Found');

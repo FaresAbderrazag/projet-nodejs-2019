@@ -1,9 +1,9 @@
 const deleteOneById = require('../services/deleteOneById');
 
 module.exports = (req, res, next) => {
-  const { listId } = req.params;
+  const { userId, listId } = req.params;
 
-  deleteOneById(listId)
+  deleteOneById(userId, listId)
     .then((list) => {
       res.json(list);
     })

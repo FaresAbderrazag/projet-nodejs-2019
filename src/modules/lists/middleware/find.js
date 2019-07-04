@@ -2,6 +2,7 @@ const isUndefined = require('lodash/isUndefined');
 const find = require('../services/find');
 
 module.exports = (req, res, next) => {
+  const { userId } = req.params;
   const {
     first,
     offset,
@@ -13,7 +14,7 @@ module.exports = (req, res, next) => {
   if (!isUndefined(first)) firstInt = parseInt(first, 10);
   if (!isUndefined(offset)) offsetInt = parseInt(offset, 10);
 
-  find(firstInt, offsetInt, term)
+  find(userId, firstInt, offsetInt, term)
     .then((bdd) => {
       res.json(bdd);
     })

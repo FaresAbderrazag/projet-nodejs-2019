@@ -7,11 +7,11 @@ const deleteOneById = require('./middleware/deleteOneById');
 
 const router = new Router();
 
-router.route('/lists')
+router.route('/users/:userId/lists')
   .get(find)
   .post(createOne);
 
-router.route('/lists/:listId')
+router.route('/users/:userId/lists/:listId')
   .get(findOneById)
   .patch(updateOneById)
   .delete(deleteOneById);
